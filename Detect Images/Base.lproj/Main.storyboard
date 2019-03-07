@@ -1,24 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sbZ-Q1-lIu">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Detect Images-->
+        <scene sceneID="LYG-sb-A5f">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <viewController id="yec-Mb-RDD" customClass="MainViewController" customModule="Detect_Images" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Cbo-wk-hkC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo-camera" translatesAutoresizingMaskIntoConstraints="NO" id="zCW-mi-XUJ">
+                                <rect key="frame" x="0.0" y="64" width="414" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="Y1A-vV-9xH"/>
+                                </constraints>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EfH-1H-p4b">
+                                <rect key="frame" x="0.0" y="364" width="414" height="372"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="BQg-j9-l1H" firstAttribute="trailing" secondItem="zCW-mi-XUJ" secondAttribute="trailing" id="0NV-Tq-cZc"/>
+                            <constraint firstItem="EfH-1H-p4b" firstAttribute="top" secondItem="zCW-mi-XUJ" secondAttribute="bottom" id="2GJ-aA-UbB"/>
+                            <constraint firstItem="zCW-mi-XUJ" firstAttribute="top" secondItem="BQg-j9-l1H" secondAttribute="top" id="9Li-ac-3WC"/>
+                            <constraint firstItem="BQg-j9-l1H" firstAttribute="trailing" secondItem="zCW-mi-XUJ" secondAttribute="trailing" id="QDe-Zo-neu"/>
+                            <constraint firstItem="zCW-mi-XUJ" firstAttribute="leading" secondItem="BQg-j9-l1H" secondAttribute="leading" id="cuM-Bf-GwL"/>
+                            <constraint firstItem="BQg-j9-l1H" firstAttribute="bottom" secondItem="EfH-1H-p4b" secondAttribute="bottom" id="kxF-K0-4YF"/>
+                            <constraint firstItem="zCW-mi-XUJ" firstAttribute="top" secondItem="BQg-j9-l1H" secondAttribute="top" id="uWc-ex-hzu"/>
+                            <constraint firstItem="BQg-j9-l1H" firstAttribute="trailing" secondItem="EfH-1H-p4b" secondAttribute="trailing" id="v2R-3Z-Leb"/>
+                            <constraint firstItem="EfH-1H-p4b" firstAttribute="leading" secondItem="BQg-j9-l1H" secondAttribute="leading" id="xyO-13-kbE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="BQg-j9-l1H"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Detect Images" id="6Av-B3-aWS">
+                        <barButtonItem key="backBarButtonItem" title="back" id="NJw-5w-yNO"/>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="camera" id="jRG-Eq-kN6">
+                                <connections>
+                                    <action selector="cameraTapped:" destination="yec-Mb-RDD" id="gTg-Sw-0ZZ"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="organize" id="fFw-F8-aVe">
+                                <connections>
+                                    <action selector="fileTapped:" destination="yec-Mb-RDD" id="aSI-5P-PH1"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="imageView" destination="zCW-mi-XUJ" id="9xk-pJ-s1s"/>
+                        <outlet property="tableView" destination="EfH-1H-p4b" id="aLA-PJ-bq9"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rGa-uW-40g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="534.78260869565224" y="-117.85714285714285"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="0RY-lY-aMt">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sbZ-Q1-lIu" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sqj-vG-QjY">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="yec-Mb-RDD" kind="relationship" relationship="rootViewController" id="l9z-2H-rI3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7d8-DP-2ti" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-404" y="-117.39130434782609"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="photo-camera" width="44.846714019775391" height="44.846714019775391"/>
+    </resources>
 </document>
